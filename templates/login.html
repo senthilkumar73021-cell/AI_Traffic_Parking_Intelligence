@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AI Traffic & Parking Intelligence</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+    min-height: 100vh;
+
+    background: #050b10;
+
+    color: white;
+
+}
+
+
+/* ==========================================
+   MAIN LOGIN PAGE
+========================================== */
+
+.login-page {
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+
+    /* ======================================
+       BACKGROUND IMAGE
+
+       Replace this with your own image:
+
+       url("/static/images/login-bg.jpg")
+
+       ====================================== */
+
+    background-image:
+
+        linear-gradient(
+            90deg,
+            rgba(3,10,15,0.93),
+            rgba(3,10,15,0.72),
+            rgba(3,10,15,0.45)
+        ),
+
+        url("https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+}
+
+
+/* ==========================================
+   GREEN BACKGROUND GLOW
+========================================== */
+
+.login-page::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,230,118,0.08);
+
+    filter:
+        blur(120px);
+
+    top: -200px;
+
+    right: -150px;
+
+    pointer-events: none;
+
+}
+
+
+/* ==========================================
+   LOGIN CARD
+========================================== */
+
+.login-card {
+
+    width: 470px;
+
+    max-width: 100%;
+
+    padding: 40px 42px;
+
+    position: relative;
+
+    z-index: 2;
+
+    border-radius: 20px;
+
+
+    /* GLASS EFFECT */
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(10,22,29,0.95),
+            rgba(5,13,18,0.88)
+        );
+
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+
+    /* SHADOW */
+
+    box-shadow:
+
+        0 35px 80px
+        rgba(0,0,0,0.60),
+
+        0 0 40px
+        rgba(0,230,118,0.04),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.07);
+
+}
+
+
+/* ==========================================
+   TOP GREEN LINE
+========================================== */
+
+.login-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 10%;
+
+    width: 80%;
+
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            #00e676,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(0,230,118,0.6);
+
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.logo-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #00e676;
+
+    background:
+        rgba(0,230,118,0.08);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.25);
+
+    box-shadow:
+        0 0 25px
+        rgba(0,230,118,0.10);
+
+    font-size: 20px;
+
+}
+
+
+.logo-text {
+
+    font-size: 13px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+
+}
+
+
+.logo-text span {
+
+    color: #00e676;
+
+}
+
+
+/* ==========================================
+   LOGIN ICON
+========================================== */
+
+.login-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0,230,118,0.09);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.25);
+
+    color: #00e676;
+
+    font-size: 22px;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,230,118,0.10);
+
+}
+
+
+/* ==========================================
+   HEADING
+========================================== */
+
+.login-card h1 {
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.subtitle {
+
+    color: #89969e;
+
+    font-size: 12px;
+
+    margin-bottom: 27px;
+
+}
+
+
+/* ==========================================
+   INPUT GROUP
+========================================== */
+
+.input-group {
+
+    margin-bottom: 18px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #d5dde1;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================
+   INPUT WRAPPER
+========================================== */
+
+.input-wrapper {
+
+    position: relative;
+
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 47px;
+
+    padding:
+        0 43px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    transition:
+        all 0.25s ease;
+
+    box-shadow:
+        inset 0 1px 2px
+        rgba(0,0,0,0.25);
+
+}
+
+
+/* ==========================================
+   GREEN FOCUS EFFECT
+========================================== */
+
+.input-wrapper input:focus {
+
+    border-color:
+        #00e676;
+
+    background:
+        rgba(0,230,118,0.045);
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(0,230,118,0.08),
+
+        0 0 20px
+        rgba(0,230,118,0.08);
+
+}
+
+
+/* ==========================================
+   INPUT ICON
+========================================== */
+
+.input-icon {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #6e7c84;
+
+    font-size: 13px;
+
+    pointer-events: none;
+
+    transition: 0.25s ease;
+
+}
+
+
+.input-wrapper input:focus ~ .input-icon {
+
+    color: #00e676;
+
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #64727a;
+
+}
+
+
+/* ==========================================
+   PASSWORD TOGGLE
+========================================== */
+
+.password-toggle {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #68767e;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.password-toggle:hover {
+
+    color: #00e676;
+
+}
+
+
+/* ==========================================
+   OPTIONS
+========================================== */
+
+.login-options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 3px;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* REMEMBER ME */
+
+.remember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #7d898f;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+}
+
+
+.remember input {
+
+    appearance: none;
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 4px;
+
+    border:
+        1px solid #59666d;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+}
+
+
+.remember input:checked {
+
+    background:
+        #00e676;
+
+    border-color:
+        #00e676;
+
+}
+
+
+.remember input:checked::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    color: #03120a;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    left: 2px;
+
+    top: -1px;
+
+}
+
+
+/* FORGOT PASSWORD */
+
+.forgot {
+
+    color: #00e676;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+.forgot:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.login-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #00c853,
+            #00e676
+        );
+
+    color: #03120a;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease;
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(0,230,118,0.20);
+
+}
+
+
+.login-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(0,230,118,0.30);
+
+}
+
+
+.login-btn:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* ==========================================
+   SIGNUP LINK
+========================================== */
+
+.signup-text {
+
+    text-align: center;
+
+    margin-top: 21px;
+
+    color: #7f8b91;
+
+    font-size: 11px;
+
+}
+
+
+.signup-text a {
+
+    color: #00e676;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-left: 4px;
+
+}
+
+
+.signup-text a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ==========================================
+   SECURITY
+========================================== */
+
+.security {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    color: #536169;
+
+    font-size: 9px;
+
+}
+
+
+.security i {
+
+    color: #00c853;
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .login-page {
+
+        padding:
+            25px 15px;
+
+    }
+
+
+    .login-card {
+
+        padding:
+            30px 24px;
+
+    }
+
+
+    .login-card h1 {
+
+        font-size: 24px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     LOGIN PAGE
+========================================== -->
+
+<div class="login-page">
+
+
+    <!-- ======================================
+         LOGIN CARD
+    ======================================= -->
+
+    <div class="login-card">
+
+
+        <!-- ==================================
+             LOGO
+        =================================== -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+
+                <i class="fa-solid fa-car-side"></i>
+
+            </div>
+
+
+            <div class="logo-text">
+
+                AI Traffic &
+
+                <span>Parking Intelligence</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================
+             LOGIN ICON
+        =================================== -->
+
+        <div class="login-icon">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+        </div>
+
+
+
+        <!-- ==================================
+             HEADING
+        =================================== -->
+
+        <h1>
+
+            Welcome Back!
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            Login to access your account
+
+        </p>
+
+
+
+        <!-- ==================================
+             LOGIN FORM
+        =================================== -->
+
+        <form
+            action="{{ url_for('login') }}"
+            method="POST">
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label for="email">
+
+                    Email Address
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope input-icon"></i>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label for="password">
+
+                    Password
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock input-icon"></i>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+
+                    <i
+                        class="fa-solid fa-eye password-toggle"
+                        id="togglePassword">
+                    </i>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OPTIONS -->
+
+            <div class="login-options">
+
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        name="remember"
+                    >
+
+                    Remember me
+
+                </label>
+
+
+                <a
+                    href="#"
+                    class="forgot">
+
+                    Forgot Password?
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                &nbsp;
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- SIGN UP -->
+
+        <div class="signup-text">
+
+            Don't have an account?
+
+            <a href="{{ url_for('signup') }}">
+
+                Sign Up
+
+            </a>
+
+        </div>
+
+
+
+        <!-- SECURITY -->
+
+        <div class="security">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            Your information is securely protected
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     PASSWORD SHOW / HIDE
+========================================== -->
+
+<script>
+
+const togglePassword =
+    document.getElementById(
+        "togglePassword"
+    );
+
+
+const password =
+    document.getElementById(
+        "password"
+    );
+
+
+togglePassword.addEventListener(
+    "click",
+    function () {
+
+        if (
+            password.type === "password"
+        ) {
+
+            password.type = "text";
+
+            this.classList.remove(
+                "fa-eye"
+            );
+
+            this.classList.add(
+                "fa-eye-slash"
+            );
+
+        }
+
+        else {
+
+            password.type =
+                "password";
+
+            this.classList.remove(
+                "fa-eye-slash"
+            );
+
+            this.classList.add(
+                "fa-eye"
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

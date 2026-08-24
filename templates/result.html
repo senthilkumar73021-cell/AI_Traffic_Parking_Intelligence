@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result | AI Traffic & Parking Intelligence</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(0,230,118,0.07),
+            transparent 30%
+        ),
+        #050b10;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.page-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    width: 235px;
+
+    min-height: 100vh;
+
+    padding: 24px 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,20,27,0.98),
+            rgba(3,10,15,0.98)
+        );
+
+    border-right:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        8px 0 35px
+        rgba(0,0,0,0.35);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 38px;
+
+}
+
+
+.logo-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #00e676;
+
+    background:
+        rgba(0,230,118,0.08);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.25);
+
+    box-shadow:
+        0 0 22px
+        rgba(0,230,118,0.12);
+
+}
+
+
+.logo-text {
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+
+}
+
+
+.logo-text span {
+
+    display: block;
+
+    color: #00e676;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.nav-link {
+
+    min-height: 42px;
+
+    padding: 10px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #9aa7ae;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    transition: 0.25s ease;
+
+}
+
+
+.nav-link i {
+
+    width: 17px;
+
+    text-align: center;
+
+}
+
+
+.nav-link:hover {
+
+    color: white;
+
+    background:
+        rgba(0,230,118,0.07);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.nav-link.active {
+
+    color: #03120a;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00c853,
+            #00e676
+        );
+
+    box-shadow:
+        0 7px 22px
+        rgba(0,230,118,0.20);
+
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+
+    margin-top: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+.sidebar-btn {
+
+    width: 100%;
+
+    height: 38px;
+
+    border-radius: 7px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    background:
+        rgba(255,255,255,0.02);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+}
+
+
+.sidebar-btn.signup {
+
+    border: none;
+
+    color: #03120a;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c853,
+            #00e676
+        );
+
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 35px 45px 45px;
+
+    overflow-y: auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-title h1 {
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+}
+
+
+.page-title p {
+
+    margin-top: 7px;
+
+    color: #7f8b91;
+
+    font-size: 10px;
+
+}
+
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: #00e676;
+
+    background:
+        rgba(0,230,118,0.05);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.20);
+
+    font-size: 9px;
+
+}
+
+
+.status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00e676;
+
+    box-shadow:
+        0 0 12px
+        rgba(0,230,118,0.9);
+
+}
+
+
+/* =========================================================
+   RESULT HERO
+========================================================= */
+
+.result-hero {
+
+    padding: 30px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,27,35,0.96),
+            rgba(5,13,18,0.98)
+        );
+
+    border:
+        1px solid
+        rgba(0,230,118,0.14);
+
+    box-shadow:
+
+        0 20px 55px
+        rgba(0,0,0,0.40),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.04),
+
+        0 0 40px
+        rgba(0,230,118,0.04);
+
+}
+
+
+/* =========================================================
+   SUCCESS ICON
+========================================================= */
+
+.result-icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #03120a;
+
+    font-size: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c853,
+            #00e676
+        );
+
+    box-shadow:
+
+        0 0 25px
+        rgba(0,230,118,0.30),
+
+        0 0 60px
+        rgba(0,230,118,0.12);
+
+}
+
+
+.result-hero h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.result-hero p {
+
+    color: #7f8c92;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   MAIN RESULT
+========================================================= */
+
+.main-result {
+
+    margin-top: 24px;
+
+}
+
+
+.result-label {
+
+    color: #7d898f;
+
+    font-size: 9px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.traffic-level {
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    color: #00e676;
+
+    text-shadow:
+        0 0 22px
+        rgba(0,230,118,0.25);
+
+}
+
+
+/* =========================================================
+   RESULT GRID
+========================================================= */
+
+.result-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.result-card {
+
+    min-height: 135px;
+
+    padding: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,27,35,0.94),
+            rgba(5,13,18,0.96)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(0,0,0,0.30),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.03);
+
+}
+
+
+.result-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    right: -35px;
+
+    top: -35px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,230,118,0.08);
+
+    filter: blur(25px);
+
+}
+
+
+.result-card-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    margin-bottom: 14px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #00e676;
+
+    background:
+        rgba(0,230,118,0.07);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.14);
+
+}
+
+
+.result-card h3 {
+
+    font-size: 10px;
+
+    color: #7f8b91;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+
+}
+
+
+.result-card .value {
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    color: white;
+
+}
+
+
+.result-card .sub {
+
+    color: #657279;
+
+    font-size: 8px;
+
+    margin-top: 7px;
+
+}
+
+
+/* =========================================================
+   DETAILS CARD
+========================================================= */
+
+.details-card {
+
+    padding: 22px;
+
+    margin-bottom: 18px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,27,35,0.94),
+            rgba(5,13,18,0.96)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.30);
+
+}
+
+
+.details-title {
+
+    font-size: 13px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.details-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.detail-item {
+
+    padding: 13px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+}
+
+
+.detail-item label {
+
+    display: block;
+
+    color: #68757c;
+
+    font-size: 8px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.detail-item span {
+
+    color: #dce3e6;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   RECOMMENDATION
+========================================================= */
+
+.recommendation {
+
+    padding: 20px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(0,230,118,0.035);
+
+    border:
+        1px solid
+        rgba(0,230,118,0.12);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,230,118,0.04);
+
+    margin-bottom: 20px;
+
+}
+
+
+.recommendation-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #00e676;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.recommendation p {
+
+    color: #89969c;
+
+    font-size: 9px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+
+.action-btn {
+
+    flex: 1;
+
+    height: 44px;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+}
+
+
+.predict-again {
+
+    color: #03120a;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c853,
+            #00e676
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,230,118,0.18);
+
+}
+
+
+.predict-again:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 32px
+        rgba(0,230,118,0.30);
+
+}
+
+
+.home-btn {
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+}
+
+
+.home-btn:hover {
+
+    border-color: #00e676;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,230,118,0.08);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .details-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .page-container {
+
+        flex-direction: column;
+
+    }
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: auto;
+
+    }
+
+    .navigation {
+
+        display: none;
+
+    }
+
+    .sidebar-bottom {
+
+        margin-top: 15px;
+
+        flex-direction: row;
+
+    }
+
+    .result-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .main-content {
+
+        padding: 20px;
+
+    }
+
+    .details-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .action-buttons {
+
+        flex-direction: column;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page-container">
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-car-side"></i>
+
+        </div>
+
+        <div class="logo-text">
+
+            AI Traffic &
+
+            <span>
+                Parking Intelligence
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+
+        <a
+            href="{{ url_for('home') }}"
+            class="nav-link">
+
+            <i class="fa-solid fa-house"></i>
+
+            Home
+
+        </a>
+
+
+        <a
+            href="{{ url_for('predict') }}"
+            class="nav-link active">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Predict
+
+        </a>
+
+
+        <a href="#" class="nav-link">
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="#" class="nav-link">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            Analytics
+
+        </a>
+
+
+        <a href="#" class="nav-link">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            History
+
+        </a>
+
+
+        <a href="#" class="nav-link">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            About Us
+
+        </a>
+
+
+        <a href="#" class="nav-link">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            Contact Us
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button
+            class="sidebar-btn"
+            onclick="window.location.href='{{ url_for('login') }}'">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            Login
+
+        </button>
+
+
+        <button
+            class="sidebar-btn signup"
+            onclick="window.location.href='{{ url_for('signup') }}'">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Sign Up
+
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+
+        <div class="page-title">
+
+            <h1>
+                Prediction Result
+            </h1>
+
+            <p>
+                AI-powered traffic and parking prediction results
+            </p>
+
+        </div>
+
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Prediction Complete
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         RESULT HERO
+    ================================================== -->
+
+    <section class="result-hero">
+
+
+        <div class="result-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+
+        <h2>
+            Prediction Completed Successfully
+        </h2>
+
+
+        <p>
+            Your traffic and parking prediction has been generated.
+        </p>
+
+
+        <div class="main-result">
+
+
+            <div class="result-label">
+
+                Predicted Traffic Congestion
+
+            </div>
+
+
+            <div class="traffic-level">
+
+                {{ prediction }}
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         RESULT CARDS
+    ================================================== -->
+
+    <div class="result-grid">
+
+
+        <!-- CONGESTION -->
+
+        <div class="result-card">
+
+
+            <div class="result-card-icon">
+
+                <i class="fa-solid fa-car"></i>
+
+            </div>
+
+
+            <h3>
+                Traffic Congestion
+            </h3>
+
+
+            <div class="value">
+
+                {{ prediction }}
+
+            </div>
+
+
+            <div class="sub">
+
+                Predicted traffic level
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PARKING -->
+
+        <div class="result-card">
+
+
+            <div class="result-card-icon">
+
+                <i class="fa-solid fa-square-parking"></i>
+
+            </div>
+
+
+            <h3>
+                Parking Occupancy
+            </h3>
+
+
+            <div class="value">
+
+                {{ predicted_occupancy }}
+
+            </div>
+
+
+            <div class="sub">
+
+                Expected parking occupancy
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROBABILITY -->
+
+        <div class="result-card">
+
+
+            <div class="result-card-icon">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+            </div>
+
+
+            <h3>
+                Congestion Probability
+            </h3>
+
+
+            <div class="value">
+
+                {{ congestion_probability }}
+
+            </div>
+
+
+            <div class="sub">
+
+                Model confidence
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         INPUT DETAILS
+    ================================================== -->
+
+    <section class="details-card">
+
+
+        <h2 class="details-title">
+
+            Prediction Details
+
+        </h2>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <label>
+                    Algorithm
+                </label>
+
+                <span>
+                    {{ algorithm }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Location
+                </label>
+
+                <span>
+                    {{ location }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Date
+                </label>
+
+                <span>
+                    {{ date }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Time
+                </label>
+
+                <span>
+                    {{ time }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Vehicle Count
+                </label>
+
+                <span>
+                    {{ vehicle_count }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Average Speed
+                </label>
+
+                <span>
+                    {{ average_speed }} km/h
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Weather
+                </label>
+
+                <span>
+                    {{ weather }}
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <label>
+                    Event
+                </label>
+
+                <span>
+                    {{ event }}
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECOMMENDATION
+    ================================================== -->
+
+    <div class="recommendation">
+
+
+        <div class="recommendation-title">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            AI Recommendation
+
+        </div>
+
+
+        <p>
+
+            {% if prediction == "High" %}
+
+                High traffic congestion is predicted.
+                Consider using an alternative route and
+                avoiding peak travel periods.
+                Parking availability may also be limited.
+
+            {% elif prediction == "Medium" %}
+
+                Moderate traffic congestion is predicted.
+                Allow additional travel time and monitor
+                traffic conditions before starting your journey.
+
+            {% else %}
+
+                Low traffic congestion is predicted.
+                Current traffic conditions appear favorable
+                for travel.
+
+            {% endif %}
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         ACTION BUTTONS
+    ================================================== -->
+
+    <div class="action-buttons">
+
+
+        <button
+            class="action-btn predict-again"
+            onclick="window.location.href='{{ url_for('predict') }}'">
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            &nbsp;
+
+            Make Another Prediction
+
+        </button>
+
+
+        <button
+            class="action-btn home-btn"
+            onclick="window.location.href='{{ url_for('home') }}'">
+
+            <i class="fa-solid fa-house"></i>
+
+            &nbsp;
+
+            Back to Home
+
+        </button>
+
+
+    </div>
+
+
+</main>
+
+
+</div>
+
+
+</body>
+
+</html>
