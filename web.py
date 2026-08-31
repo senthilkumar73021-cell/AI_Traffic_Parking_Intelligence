@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
+import os
 
 
 # ============================================================
@@ -15,7 +16,10 @@ app.secret_key = "ai_traffic_parking_secret_key"
 # DATABASE
 # ============================================================
 
-DATABASE = "users.db"
+if os.environ.get("VERCEL"):
+    DATABASE = "/tmp/users.db"
+else:
+    DATABASE = "users.db"
 
 
 def get_db():
